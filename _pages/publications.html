@@ -1,36 +1,116 @@
 ---
-layout: archive
+layout: single
 title: "Publications"
 permalink: /publications/
 author_profile: true
 ---
 
+<style>
+  .pub-item{display:flex;gap:10px;align-items:center;margin:2px 0;padding:5px 8px;border-radius:8px;line-height:1.25}
+  .pub-item:hover{background:rgba(128,128,128,.14)}
+  .pub-thumb{width:56px;height:44px;object-fit:cover;border-radius:6px;background:var(--global-border-color);flex:0 0 56px;cursor:zoom-in}
+  .pub-meta{flex:1;min-width:0}
+  .pub-title{font-weight:600;margin:0;font-size:0.95em}
+  .pub-title a{text-decoration:none}
+  .pub-line{margin:0;line-height:1.4}
+  .pub-venue{opacity:.7;font-size:0.82em;margin:0}
+  .pub-authors{font-size:0.82em;margin:0}
+  .pub-sep{opacity:.5;margin:0 4px}
+  .pub-year{margin-top:16px;font-weight:700;font-size:1.05em;border-bottom:1px solid var(--global-border-color);padding-bottom:2px}
+  .badge{display:inline-block;padding:0 6px;border-radius:999px;margin-left:6px;font-size:.7em;background:color-mix(in srgb, var(--global-link-color) 18%, transparent);color:var(--global-link-color);font-weight:500;line-height:1.5}
+  .lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:1050;cursor:zoom-out}
+  .lightbox-overlay img{max-width:90%;max-height:90%;border-radius:8px;box-shadow:0 0 20px black}
+  #pub-search-wrap{display:flex;align-items:center;gap:10px;margin:8px 0 16px;flex-wrap:wrap}
+  #pub-search{flex:1;min-width:200px;max-width:360px;padding:5px 10px;font-size:0.9em;border:1px solid var(--global-border-color);border-radius:8px;background:transparent;color:inherit}
+  #pub-clear{padding:5px 10px;font-size:0.85em;border:1px solid var(--global-border-color);border-radius:8px;background:transparent;color:inherit;cursor:pointer}
+  #pub-count{margin-left:auto;opacity:.7;font-size:.9em}
+</style>
+
 {% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+<div class="wordwrap">You can also find my articles on <a href="{{ site.author.googlescholar }}">my Google Scholar profile</a>.</div>
 {% endif %}
 
-{% include base_path %}
+<div id="pub-search-wrap">
+  <input type="search" id="pub-search" aria-label="Search publications" placeholder="Search title, author, venue, tag&hellip;">
+  <button type="button" id="pub-clear">Clear</button>
+  <span id="pub-count" aria-live="polite"></span>
+</div>
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+<div id="pubs">
+{% assign pubs = site.publications | sort: "date" | reverse %}
+{% assign current_year = "" %}
+{% for post in pubs %}
+  {% assign this_year = post.date | date: "%Y" %}
+  {% if this_year != current_year %}
+    {% unless current_year == "" %}</div>{% endunless %}
+    <div class="pub-year">{{ this_year }}</div>
+    <div class="pub-year-group">
+    {% assign current_year = this_year %}
+  {% endif %}
+  {% assign search_text = post.title | append: " " | append: post.authors | append: " " | append: post.venue | append: " " | append: post.keywords | downcase | xml_escape %}
+  <div class="pub-item" data-search="{{ search_text }}">
+    {% if post.header.image %}
+      <img class="pub-thumb" src="{{ post.header.image | relative_url }}" alt="" loading="lazy" onclick="pubLightbox(this.src)">
+    {% endif %}
+    <div class="pub-meta">
+      <p class="pub-title"><a href="{% if post.paperurl %}{{ post.paperurl }}{% else %}{{ post.url | relative_url }}{% endif %}" target="_blank" rel="noopener">{{ post.title }}</a></p>
+      <p class="pub-line">
+        {% if post.authors %}<span class="pub-authors">{{ post.authors | replace: "Simon Ostermann", "<b>Simon Ostermann</b>" }}</span>{% endif %}
+        {% if post.authors and post.venue %}<span class="pub-sep">&middot;</span>{% endif %}
+        {% if post.venue %}<span class="pub-venue">{{ post.venue }}</span>{% endif %}
+        {% if post.keywords %}<span class="badge">{{ post.keywords }}</span>{% endif %}
+      </p>
+    </div>
+  </div>
+{% endfor %}
+{% unless current_year == "" %}</div>{% endunless %}
+</div>
 
+<div id="lightbox-root"></div>
 
+<script>
+function pubLightbox(src) {
+  var root = document.getElementById('lightbox-root');
+  var overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay';
+  overlay.addEventListener('click', function () { overlay.remove(); });
+  var img = document.createElement('img');
+  img.src = src;
+  overlay.appendChild(img);
+  root.appendChild(overlay);
+}
 
+(function () {
+  var input = document.getElementById('pub-search');
+  var clear = document.getElementById('pub-clear');
+  var counter = document.getElementById('pub-count');
+  var groups = document.querySelectorAll('.pub-year-group');
+
+  function update() {
+    var q = input.value.trim().toLowerCase();
+    var terms = q.length ? q.split(/\s+/) : [];
+    var visible = 0;
+    groups.forEach(function (group) {
+      var items = group.querySelectorAll('.pub-item');
+      var groupVisible = 0;
+      items.forEach(function (item) {
+        var text = item.getAttribute('data-search') || '';
+        var ok = terms.every(function (t) { return text.indexOf(t) !== -1; });
+        item.style.display = ok ? '' : 'none';
+        if (ok) { visible++; groupVisible++; }
+      });
+      var show = groupVisible > 0;
+      group.style.display = show ? '' : 'none';
+      var yearHeader = group.previousElementSibling;
+      if (yearHeader && yearHeader.classList.contains('pub-year')) {
+        yearHeader.style.display = show ? '' : 'none';
+      }
+    });
+    counter.textContent = q.length ? (visible + ' result' + (visible === 1 ? '' : 's')) : '';
+  }
+
+  input.addEventListener('input', update);
+  clear.addEventListener('click', function () { input.value = ''; input.focus(); update(); });
+  update();
+})();
+</script>
