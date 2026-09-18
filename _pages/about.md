@@ -11,13 +11,13 @@ Acting director of the [Multilinguality and Language Technology (MLT)](https://w
 
 Welcome 👋
 ======
-My research focuses on making language technology more accessible and fair, primarily for languages other than English. Two things run through most of my work: understanding what is actually happening inside language models, and making sure that understanding translates into models that work well for **low-resource languages**.
+As lead of the Efficient and Explainable NLP (E&E) group, my research focuses on making language technology more accessible and fair, primarily for languages other than English. Two things run through most of my work: understanding what is actually happening inside language models, and making sure that understanding translates into models that work well for **low-resource languages**.
 
 Concretely, I'm interested in **mechanistic interpretability**, the internal mechanisms behind specific model behaviors, in why particular training or adaptation choices change what a model knows or how it explains itself, and in turning such findings into explanations that are genuinely useful to people and that let researchers actually adjust models based on them, not just describe what is going on. Increasingly, this includes **activation steering**, a lighter-weight alternative to fine-tuning that turns such understanding directly into a way of changing model behavior.
 
 That same interest in model internals carries over into my work on **multilingual NLP**. I care about making models more data-efficient and easier to control for low-resource languages, and increasingly about using interpretability-driven methods to align model behavior across languages instead of retraining separately for each one.
 
-Beyond that, I contribute to **SOOFI**, a project building open, sovereign foundation models for German and English, mostly on the post-training side. I also have side projects on **model factuality** and **multimodal models**, and my earlier work was on commonsense reasoning and script knowledge for machine comprehension.
+Beyond that, I contribute to **SOOFI**, a project building open, sovereign foundation models for German and English, mostly on the post-training side. I also have side projects on **model factuality** and **multimodal models**, and my earlier work was on commonsense reasoning and script knowledge for machine comprehension. I completed my PhD at Saarland University in 2019 on commonsense knowledge for natural language understanding, advised by Prof. Manfred Pinkal.
 
 News 📰
 ======
