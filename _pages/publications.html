@@ -18,6 +18,8 @@ author_profile: true
   .pub-sep{opacity:.5;margin:0 4px}
   .pub-year{margin-top:16px;font-weight:700;font-size:1.05em;border-bottom:1px solid var(--global-border-color);padding-bottom:2px}
   .badge{display:inline-block;padding:0 6px;border-radius:999px;margin-left:6px;font-size:.7em;background:color-mix(in srgb, var(--global-link-color) 18%, transparent);color:var(--global-link-color);font-weight:500;line-height:1.5}
+  .pub-tag-col{flex:0 0 auto;margin-left:auto;padding-left:10px}
+  .pub-tag-col .badge{margin-left:0;padding:3px 10px;font-size:.75em;white-space:nowrap}
   .lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:1050;cursor:zoom-out}
   .lightbox-overlay img{max-width:90%;max-height:90%;border-radius:8px;box-shadow:0 0 20px black}
   #pub-search-wrap{display:flex;align-items:center;gap:10px;margin:8px 0 16px;flex-wrap:wrap}
@@ -58,9 +60,9 @@ author_profile: true
         {% if post.authors %}<span class="pub-authors">{{ post.authors | replace: "Simon Ostermann", "<b>Simon Ostermann</b>" }}</span>{% endif %}
         {% if post.authors and post.venue %}<span class="pub-sep">&middot;</span>{% endif %}
         {% if post.venue %}<span class="pub-venue">{{ post.venue }}</span>{% endif %}
-        {% if post.keywords %}<span class="badge">{{ post.keywords }}</span>{% endif %}
       </p>
     </div>
+    {% if post.keywords %}<div class="pub-tag-col"><span class="badge">{{ post.keywords }}</span></div>{% endif %}
   </div>
 {% endfor %}
 {% unless current_year == "" %}</div>{% endunless %}
