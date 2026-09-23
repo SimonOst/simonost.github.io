@@ -7,7 +7,10 @@ redirect_from:
   - /about.html
 ---
 
-Acting director of the [Multilinguality and Language Technology (MLT)](https://www.dfki.de/web/forschung/forschungsbereiche/sprachtechnologie-und-multilingualitaet) lab @DFKI. Interim chair holder for *translation-oriented language technologies* at [Saarland University](https://www.uni-saarland.de/start.html). Research group lead of [Efficient and Explainable NLP (E&E)](https://www.dfki.de/web/forschung/forschungsbereiche/sprachtechnologie-und-multilingualitaet/ee-team) @MLT.
+Acting director of the [Multilinguality and Language Technology (MLT)](https://www.dfki.de/web/forschung/forschungsbereiche/sprachtechnologie-und-multilingualitaet) lab @DFKI.<br>
+Interim chair holder for *translation-oriented language technologies* at [Saarland University](https://www.uni-saarland.de/start.html).<br>
+Research group lead of [Efficient and Explainable NLP (E&E)](https://www.dfki.de/web/forschung/forschungsbereiche/sprachtechnologie-und-multilingualitaet/ee-team) @MLT.<br>
+Member of [ELLIS](https://ellis.eu/).
 
 Welcome 👋
 ======
