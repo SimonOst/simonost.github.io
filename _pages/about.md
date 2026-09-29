@@ -38,7 +38,7 @@ News 📰
 ======
 
 <table class="news-table">
-<tr><td>October 2026</td><td><span class="news-badge accept">Accept</span></td><td>EMNLP 2026: 6 papers accepted (3 Main, 3 Findings) spanning low-resource data steering, tokenization &amp; quantization effects on interpretability, multilingual corpus auditing, and mechanistic translation analysis 🎉📚</td></tr>
+<tr><td>September 2026</td><td><span class="news-badge accept">Accept</span></td><td>EMNLP 2026: 6 papers accepted (3 Main, 3 Findings) spanning low-resource data steering, tokenization &amp; quantization effects on interpretability, multilingual corpus auditing, and mechanistic translation analysis 🎉📚</td></tr>
 <tr><td>September 2026</td><td><span class="news-badge misc">Misc</span></td><td>Became a member of <a href="https://ellis.eu/">ELLIS</a> (European Laboratory for Learning and Intelligent Systems)</td></tr>
 <tr><td>September 2026</td><td><span class="news-badge accept">Accept</span></td><td>BlackboxNLP 2026: 3 papers accepted (2 Main, 1 Reproducibility Track) on script representation, multilingual attribute steering, and the limits of automated simulatability 🔍🧩</td></tr>
 <tr><td>September 2026</td><td><span class="news-badge talk">Talk</span></td><td>Invited talk at NEC Laboratories Europe (virtual)</td></tr>
