@@ -7,8 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Acting director of the [Multilinguality and Language Technology (MLT)](https://www.dfki.de/web/forschung/forschungsbereiche/sprachtechnologie-und-multilingualitaet) lab @DFKI.<br>
-Interim chair holder for *translation-oriented language technologies* at [Saarland University](https://www.uni-saarland.de/start.html).<br>
+Deputy director of the [Multilinguality and Language Technology (MLT)](https://www.dfki.de/web/forschung/forschungsbereiche/sprachtechnologie-und-multilingualitaet) lab @DFKI.<br>
 Research group lead of [Efficient and Explainable NLP (E&E)](https://www.dfki.de/web/forschung/forschungsbereiche/sprachtechnologie-und-multilingualitaet/ee-team) @MLT.<br>
 Member of [ELLIS](https://ellis.eu/).
 
@@ -20,7 +19,7 @@ Concretely, I'm interested in **mechanistic interpretability**, the internal mec
 
 That same interest in model internals carries over into my work on **multilingual NLP**. I care about making models more data-efficient and easier to control for low-resource languages, and increasingly about using interpretability-driven methods to align model behavior across languages instead of retraining separately for each one.
 
-Beyond that, I contribute to **SOOFI**, a project building open, sovereign foundation models for German and English, mostly on the post-training side. I also have side projects on **model factuality** and **multimodal models**, and my earlier work was on commonsense reasoning and script knowledge for machine comprehension. I completed my PhD at Saarland University in 2019 on commonsense knowledge for natural language understanding, advised by Prof. Manfred Pinkal.
+Beyond that, I contribute to **SOOFI**, a project building open, sovereign foundation models for German and English, mostly on the post-training side. I also have side projects on **model factuality** and **multimodal models**, and my earlier work was on commonsense reasoning and script knowledge for machine comprehension. I completed my PhD at Saarland University in 2019 on commonsense knowledge for natural language understanding, advised by Prof. Manfred Pinkal. From October 2025 to 2026, I served as acting director of the MLT lab and as interim professor at Saarland University.
 
 <style>
   .news-table{width:100%;border-collapse:collapse}
