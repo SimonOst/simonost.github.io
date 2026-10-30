@@ -55,7 +55,7 @@ author_profile: true
       <img class="pub-thumb" src="{{ post.header.image | relative_url }}" alt="" loading="lazy" onclick="pubLightbox(this.src)">
     {% endif %}
     <div class="pub-meta">
-      <p class="pub-title"><a href="{% if post.paperurl %}{{ post.paperurl }}{% else %}{{ post.url | relative_url }}{% endif %}" target="_blank" rel="noopener">{{ post.title }}</a></p>
+      <p class="pub-title">{% if post.paperurl %}<a href="{{ post.paperurl }}" target="_blank" rel="noopener">{{ post.title }}</a>{% else %}{{ post.title }}{% endif %}</p>
       <p class="pub-line">
         {% if post.authors %}<span class="pub-authors">{{ post.authors | replace: "Simon Ostermann", "<b>Simon Ostermann</b>" }}</span>{% endif %}
         {% if post.authors and post.venue %}<span class="pub-sep">&middot;</span>{% endif %}

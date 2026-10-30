@@ -8,9 +8,13 @@ across the rest of the site (title, venue, authors, keywords, citation,
 optional header image).
 
 Usage:
-    python3 scripts/add_publications.py path/to/entries.bib
-    python3 scripts/add_publications.py path/to/entries.bib --force
-    python3 scripts/add_publications.py path/to/entries.bib --images path/to/image/folder
+    python3 scripts/add_publications.py
+    python3 scripts/add_publications.py --force
+    python3 scripts/add_publications.py --images path/to/image/folder
+    python3 scripts/add_publications.py path/to/other-entries.bib
+
+By default, this reads files/publications.bib in this repo. Pass a
+different path as an argument to use another file instead.
 
 By default, entries whose target Markdown file already exists in
 _publications/ are skipped, so re-running this on a growing .bib file
@@ -189,7 +193,12 @@ def build_entry(etype, citekey, fields, image_dirs):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("bib_file", help="Path to a .bib file with one or more entries")
+    ap.add_argument(
+        "bib_file",
+        nargs="?",
+        default=os.path.join(SITE_ROOT, "files", "publications.bib"),
+        help="Path to a .bib file with one or more entries (default: files/publications.bib in this repo)",
+    )
     ap.add_argument(
         "--images",
         action="append",
